@@ -44,12 +44,7 @@ export default {
                 this.albuns = result.data
             })     
       },
-    //   getByIdPosts: function () {
-    //       axios.get(this.uriBase/'')
-    //         .then(result =>{
-    //             this.posts = result.data
-    //         })     
-    //   }
+
   }
 }
 </script>
