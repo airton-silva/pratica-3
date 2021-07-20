@@ -1,18 +1,18 @@
 <template>
   <div class="home">
-    <Posts msg="Bem vindo a pagina de Posts"/><br>
+    <Todos msg="Bem vindo a pagina de Todos"/><br>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Posts from '@/components/Posts.vue'
+import Todos from '@/components/Todos.vue'
 
 
 export default {
-  name: 'Home',
+  name: 'todos',
   components: {
-    Posts,
+    Todos,
 
   }
 }

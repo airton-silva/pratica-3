@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-//import DatailsPost from '../views/DatailsPost.vue'
+import Todos from '../views/Todos.vue'
 
 
 
@@ -12,12 +12,11 @@ const routes = [
     component: Home
   },
 
-  // {
-  //   props: true,
-  //   path: '/datails/:id',
-  //   name: 'DatailsPost',
-  //   component: DatailsPost
-  // },
+  {
+    path: '/todos',
+    name: 'Todos',
+    component: Todos
+  },
 
   {
     path: '/about',
