@@ -7,6 +7,16 @@
 
         <div class="card col-md-8 offset-2" v-for="post in posts" :key="post.id">
             <div class="card-body">
+              
+                <div v-for="user in users" :key="user.id">
+                  <div  v-if="user.id ==post.userId" class="alert alert-info" >                      
+                       <span class="col-md-4"><strong>User/Autor: </strong>{{user.name}}</span>
+                       <span class="col-md-4 offset-2"><strong>Email/Autor: </strong>{{user.email}}</span>
+                  </div>
+                  
+                
+                </div>
+               
                 <h5 class="card-title">Titulo : {{post.title}}</h5>
                 <p>{{post.body}}</p>
                 <!-- <a :href="'/datails/'+ post.id" class="card-link" name="cmts">Comentarios</a> -->
@@ -44,9 +54,11 @@ export default {
     return {
       uriBase : 'https://jsonplaceholder.typicode.com/posts',
       uriComments :'https://jsonplaceholder.typicode.com/comments',
+      uriUser :'https://jsonplaceholder.typicode.com/users',
       posts: [],
+      incPosts: [],
       comments: [],
-      cpat:[]
+      users:[]
     } 
 
   },
@@ -56,7 +68,11 @@ export default {
           axios.get(this.uriBase)
             .then(result =>{
                 this.posts = result.data
-            })     
+                this.getUserByPostId (this.posts)
+            })
+            
+            
+            
       },
 
       getAllCommentsByPostId (post){
@@ -69,8 +85,23 @@ export default {
                 });
                 
             })
+      
+      },
 
-            
+      getUserByPostId (post){
+        
+          axios.get(this.uriUser)
+            .then(result =>{
+                this.users = result.data
+                this.users = this.users.filter(function(user) {
+                  return user.postId == post.id;
+                 
+                });
+                //console.log(this.users)
+            })
+
+
+      
       },
 
   },
