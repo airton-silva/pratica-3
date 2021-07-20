@@ -10,14 +10,16 @@
                 <h5 class="card-title">Titulo : {{post.title}}</h5>
                 <p>{{post.body}}</p>
                 <!-- <a :href="'/datails/'+ post.id" class="card-link" name="cmts">Comentarios</a> -->
-                <a href="#" class="card-link" @click.prevent="getAllComments (post)" name="cmts">Comentarios</a>
-                <div v-for="cmt in cpat" :key="cmt.id" class="alert alert-secondary">
-                  <span><h5>{{ cmt.title}}</h5> </span>
-                  <span><h6>{{ cmt.email   }}</h6></span>
-                  
-                  <p>{{cmt.body}}</p>
+                <a href="#" class="card-link" @click.prevent="getAllComments (post)">Comentarios</a>
+                    <div v-for="cmt in cpat" :key="cmt.id" class="alert alert-secondary">
+                      <div v-if="post.id == cmt.postId">
+                      <span><h5>{{ cmt.title}}</h5> </span>
+                      <span><h6>{{ cmt.email   }}</h6></span>
+                      
+                      <p>{{cmt.body}}</p>
+                      </div>
 
-                </div> 
+                    </div> 
                 <!-- <a href="/datails">Datalhes post</a> -->
                 <!-- <div v-for="comment in comments" :key="comment.id">
                   {{ comment.email }}
@@ -65,23 +67,15 @@ export default {
           axios.get(this.uriComments)
             .then(result =>{
                 this.comments = result.data
+                this.cpat = this.comments.filter(function(comment) {
+                  return comment.postId == post.id;
+                });
+                
             })
-            //this.getCommentByIdPost(this.comments)
-            // for(var i = 0; i < this.comments.length; i++) {
-            //   if(this.comments[i].postId == 1){
-            //     commentsP.push(this.comments[i]);
-            //   }
-            // }
-            this.cpat = this.comments.filter(function(comment) {
-              return comment.postId == post.id;
-            });
+
             
       },
 
-      // getCommentByIdPost(comments) {
-      //   this.cpat = comments
-        
-      // }
   },
 
 }
