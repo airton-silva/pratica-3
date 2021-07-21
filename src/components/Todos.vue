@@ -19,7 +19,6 @@
                        <h5>Endereço:</h5>
                        <span class="col-md-4"><strong>Rua: </strong>{{user.address.street}}</span>
                        <span class="col-md-4"><strong>Nº: </strong>{{user.address.suite}}</span>
-                       <span class="col-md-4"><strong>Nº: </strong>{{user.address.suite}}</span>
                        <span class="col-md-4"><strong>Cidade: </strong>{{user.address.city}}</span>
                        <span class="col-md-4"><strong>Cep: </strong>{{user.address.zipcode}}</span>
                        <h5>Empresa:</h5>
